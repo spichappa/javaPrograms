@@ -1,0 +1,41 @@
+package practisePhase01;
+
+public class PalindromeCheck {
+
+	public static boolean checkPalindrome(String str) {
+
+		int strLen=str.length();
+		int i=0;
+		int j=strLen-1;
+		int k=strLen/2;
+
+		while(i!=j) {
+			for(int loop=0;loop<=k-1;loop++) {
+
+				char rightElement=	str.charAt(i);
+				char leftElement=   str.charAt(j);
+
+				if(rightElement!=leftElement) {
+					return false;
+				}
+
+				i++;
+				j--;
+			}
+		}
+		return true;
+	}
+
+	public static void main(String[] args) {
+
+		String str="abcfdefghgfedcba";
+		System.out.println("the input string is: "+str);
+		boolean isPalindrome = checkPalindrome(str);
+		if(isPalindrome==true) {
+			System.out.println("It is a Palindrome");
+		}
+		else {
+			System.out.println("It is not a Palindrome");
+		}
+	}
+}
