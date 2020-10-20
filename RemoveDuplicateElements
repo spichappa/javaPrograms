@@ -1,0 +1,14 @@
+class RemoveDuplicateElements {
+
+//RemoveDuplicateElements - to remove duplicate elements and returning the resized array length as output without using additional space/array.
+
+    public int removeDuplicates(int[] nums) {
+        int p=0;
+        for(int i=p+1;i<nums.length;i++){
+                if(nums[i]!=nums[p]){
+                    nums[++p]=nums[i];
+                }
+        }
+        return p+1;
+    }
+}
