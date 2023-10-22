@@ -1,0 +1,70 @@
+import java.io.*;
+import java.util.*;
+
+ /*
+Program to find two strings are anagrams
+input : {listen,silent}
+output: true
+input: {abcc,abc}
+output: false
+
+  */
+
+class TwoStringAnagram {
+  public static void main(String[] args) {
+    String firstStr = "listen";
+    String secondStr = "silent";
+    boolean isAnagram = findAnagram(firstStr,secondStr);
+    System.out.println("Are the two strings anagram?"+isAnagram);
+  }
+
+  //
+  public static boolean findAnagram(String str1, String str2){
+    char[] firstWordArray = str1.toCharArray();
+    char[] secondWordArray = str2.toCharArray();
+
+    int lengthStr1 = firstWordArray.length;
+    int lengthStr2 = secondWordArray.length;
+
+    Map<Character,Integer> map = new HashMap<>();
+
+    if(lengthStr1!=lengthStr2){
+      System.out.println("two strings length itself is not matching, so they cant be further checked for anagrams/characters match");
+       return false;
+    }
+       
+    
+    //Storing the first string's characters and their count in a hashmap
+
+    for(char ch:firstWordArray){
+      if(map.containsKey(ch))
+        map.put(ch,map.get(ch)+1);
+
+      else{
+          map.put(ch,1);
+      }
+    }
+
+//Checking the second string's characters in the above hashmap and update/subtract the value(count) in a hashmap to meet the criteria as 0.
+
+    for(char ch:secondWordArray){
+
+      if(map.containsKey(ch))
+        map.put(ch, map.get(ch)-1);
+
+      else{
+          map.put(ch,1);
+      }
+    }
+
+// Verification Point: Check if the letter's count has become 0 when they match both string's letter 
+
+    for(int count:map.values()){
+      if(count!=0){
+        System.out.println("Mismatch found in the characters count of the two input strings");
+        return false;
+      }
+    }
+      return true;
+  }
+}
