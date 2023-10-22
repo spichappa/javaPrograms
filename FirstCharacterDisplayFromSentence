@@ -1,0 +1,40 @@
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+ /*
+Program to print the first letter of each word present in the string
+input: "This is a coding challenge program"
+output: T i a c c p
+
+Actual Output:
+The input sentence is :This is a coding challenge program
+The first characters from the sentence are: T i a c c p 
+
+*/
+
+class Solution {
+  public static void main(String[] args) {
+
+    String inputString = "This is a coding challenge program";
+    System.out.println("The input sentence is :"+inputString);
+    displayFirstCharacter(inputString);
+  }
+
+  public static void displayFirstCharacter(String str){
+      String[] wordsList = str.split(" ");
+      StringBuilder firstCharList = new StringBuilder();
+      for(String word : wordsList){
+        char ch = word.charAt(0);
+        firstCharList.append(ch);
+        firstCharList.append(" ");
+      }
+
+      System.out.println("The first characters from the sentence are: "+firstCharList.toString());
+  }
+
+  
+}
