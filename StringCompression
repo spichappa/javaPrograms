@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.*;
+
+class StringCompression {
+
+  public static void main(String[] args) {
+    String [] ipArr = {"a","a","a","a","b","b","b","c","c","c","c","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a"};
+    System.out.println("Input String size is: "+ipArr.length);
+    performStringCompression(ipArr);
+  }
+
+  public static void performStringCompression(String[] strArr){
+    String prevStr = null;
+    int count=0;
+    List<String> list = new LinkedList<>();
+
+    for(String str:strArr){
+      if(prevStr!=str && prevStr!=null){
+        
+        list.add(prevStr);
+        findCountValue(String.valueOf(count),list);
+        count=0;
+      }
+      
+        prevStr=str;
+        count++;
+      
+      // list.add(prevStr);
+    } 
+      list.add(prevStr);
+      findCountValue(String.valueOf(count),list);
+
+    System.out.println("The list is "+list+ "and it is of size" +list.size() );
+  }
+
+  public static void findCountValue(String countStr, List<String> lst){
+
+      char[] countStrArray = countStr.toCharArray();
+  
+      for(char ch:countStrArray){
+        lst.add(String.valueOf(ch));
+      }
+  }
+
+}
